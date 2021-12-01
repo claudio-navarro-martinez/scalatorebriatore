@@ -1,0 +1,17 @@
+No es facil configurar VSC con todas las carecteristicas de autocompletado 
+Instalar JDK v11 en primer lugar y luego SBT que no importa la version, en principio no
+hay incompatibilidad con la version de scala.
+Scala no se instala como tal, SBT descarga el que se le indica en el build.SBT
+
+scalaVersion := "2.12.15"
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.2.0"
+
+
+esta version es compatible con SPark 3.2 que vamos a utilizar en el ejemplo
+
+EN el directorio raiz ejecutamos
+
+sbt new scala/hello-world.g8
+
+y entonces abrimos VSC apuntando a ese directorio, de esta manera VSC nos mostrara el autocompletado
+
