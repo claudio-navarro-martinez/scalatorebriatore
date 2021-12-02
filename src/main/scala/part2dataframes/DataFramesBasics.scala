@@ -7,6 +7,8 @@ import org.apache.spark.sql.types.StructField
 import org.apache.spark.sql.types.StringType
 import org.apache.spark.sql.types.DoubleType
 
+
+
 object DataFramesBasics extends App {
     //creating spark session
     val spark = SparkSession.builder()
@@ -17,7 +19,7 @@ object DataFramesBasics extends App {
     val firstDF = spark.read
         .format("json")
         .option("inferSchema","true")
-        .load("/home/claudiomartinez/scala/spark/spark-essentials/src/main/resources/data/cars.json")
+        .load("/FileStore/tables/cars.json")
     firstDF.show()
     firstDF.printSchema()
     val lt = LongType
@@ -34,7 +36,7 @@ object DataFramesBasics extends App {
     ))
     val carsDFSchema = firstDF.schema
     
-    val carsDFWithSchema = spark.read.format("json").schema(carsDFSchema).load("/home/claudiomartinez/scala/spark/spark-essentials/src/main/resources/data/cars.json")
+    val carsDFWithSchema = spark.read.format("json").schema(carsDFSchema).load("/FileStore/tables/cars.json")
     val myRow = Row("chevrolet chevelle malibu",18.0,8L,307.0,130L,3504L,12.0,"1970-01-01","USA")
     val cars = Seq(
         ("chevrolet chevelle malibu",18.0,8L,307.0,130L,3504L,12.0,"1970-01-01","USA"),

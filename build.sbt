@@ -28,6 +28,11 @@ version := "1.0"
 libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2"
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.2.0"
 
+
+// DATABRICKS
+unmanagedBase := new java.io.File("/home/claudiomartinez/.local/lib/python3.8/site-packages/pyspark/jars")
+
+
 // Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
 // we're adding the scala-parser-combinators dependency to the set of dependencies
 // that sbt will go and fetch when it starts up.

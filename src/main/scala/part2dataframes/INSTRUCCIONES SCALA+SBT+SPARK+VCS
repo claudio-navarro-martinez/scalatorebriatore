@@ -15,3 +15,41 @@ sbt new scala/hello-world.g8
 
 y entonces abrimos VSC apuntando a ese directorio, de esta manera VSC nos mostrara el autocompletado
 
+===============   usar databricks connect ==================
+
+***** databricks connect *****
+pip install -U "databricks-connect==9.1.*"
+
+add /home/claudiomartinez/.local/bin to path
+
+/home/claudiomartinez/.local/bin/databricks-connect
+
+https://adb-3800761120243348.8.azuredatabricks.net/?o=3800761120243348#setting/clusters/1202-101739-t5is1slv/configuration
+token   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+1202-101739-t5is1slv
+
+new config values (leave input empty to accept default):
+Databricks Host [https://adb-3800761120243348.8.azuredatabricks.net]: 
+
+*** IMPORTANT: For AAD token users, please leave this empty and set AAD token via spark conf, spark.databricks.service.token
+
+Databricks Token [no current value]: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+*** IMPORTANT: please ensure that your cluster has:
+- Databricks Runtime version of DBR 5.1+
+- Python version same as your local Python (i.e., 2.7 or 3.5)
+- the Spark conf `spark.databricks.service.server.enabled true` set
+
+Cluster ID (e.g., 0921-001415-jelly628) [no current value]: 1202-101739-t5is1slv
+Org ID (Azure-only, see ?o=orgId in URL) [0]: 3800761120243348
+Port [15001]: 
+
+Updated configuration in /home/claudiomartinez/.databricks-connect
+* Spark jar dir: /home/claudiomartinez/.local/lib/python3.8/site-packages/pyspark/jars
+* Spark home: /home/claudiomartinez/.local/lib/python3.8/site-packages/pyspark
+* Run `pip install -U databricks-connect` to install updates
+* Run `pyspark` to launch a Python shell
+* Run `spark-shell` to launch a Scala shell
+* Run `databricks-connect test` to test connectivity
+run databricks-connect get-jar-dir to get the python library that goes in here: (build.sbt)
+unmanagedBase := new java.io.File("/home/claudiomartinez/.local/lib/python3.8/site-packages/pyspark/jars") 
